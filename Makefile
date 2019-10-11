@@ -1,2 +1,4 @@
+funcs := list-clusters
+
 build:
-	GOOS=linux GOARCH=amd64 go build -o ./list-all-clusters/eksctl-autodelete-lambda-list-all-clusters-func ./list-all-clusters
+	for func in $(funcs) ; do env GOARCH=amd64 GOOS=linux go build -o ./$${func}/eksctl-autodelete-lambda-$${func}-func ./$${func} ; done

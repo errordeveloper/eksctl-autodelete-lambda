@@ -1,28 +1,25 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: >
-  eksctl-autodelete-lambda
-  
-  SAM Template for eksctl-autodelete-lambda
+Description: SAM Template for eksctl-autodelete-lambda
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
-    Timeout: 5
+    Timeout: 180
 
 Resources:
   ListAllClustersFunc:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: list-all-clusters/
-      Handler: eksctl-autodelete-lambda-list-all-clusters-func
+      CodeUri: list-clusters/
+      Handler: eksctl-autodelete-lambda-list-clusters-func
       Runtime: go1.x
       Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
       Events:
         CatchAll:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /hello
+            Path: /list-clusters
             Method: GET
 
 Outputs:
