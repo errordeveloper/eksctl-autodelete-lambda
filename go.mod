@@ -5,7 +5,7 @@ go 1.12
 require (
 	github.com/aws/aws-lambda-go v1.13.2
 
-	github.com/weaveworks/eksctl v0.0.0-20190919144050-66b029c8870a
+	github.com/weaveworks/eksctl v0.0.0-20191028162209-a02037f03d2b
 )
 
 replace (

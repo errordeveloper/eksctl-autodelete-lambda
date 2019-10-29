@@ -43,7 +43,7 @@ func doListCluster(request events.APIGatewayProxyRequest) (events.APIGatewayProx
 	stackManager := ctl.NewStackManager(cfg)
 
 	// TODO: convert this to ListOwnedStacksByClusterName
-	stacks, err := stackManager.ListStacks(".*")
+	stacks, err := stackManager.ListStacksMatching(".*")
 	if err != nil {
 		return events.APIGatewayProxyResponse{StatusCode: 502}, err
 	}
